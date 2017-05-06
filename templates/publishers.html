@@ -1,0 +1,25 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+ <div class="container">
+
+        <br /><br />
+
+        <h2 class="home-heading" > Game Publishers</h2>
+        <br />
+            {% for publisher in publishers %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                 <a href="/publishers/{{ publisher }}">
+                    <div class="custom-block">
+                        <div class="home-title"> {{ publisher }}</div>
+
+                        <img width="200" height="220" src="{{ publisher.PublisherLogo.url }}">
+
+                    </div>
+                 </a>
+                </div>
+            {% endfor %}
+    </div>
+
+
+{% endblock %}

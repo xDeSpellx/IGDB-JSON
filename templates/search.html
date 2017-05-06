@@ -1,0 +1,92 @@
+{%  extends 'base.html' %}
+{%  load staticfiles %}
+
+{% block content %}
+
+<script src="{% static 'JQuery/jquery-3.1.1.min.js' %}"></script>
+<script>
+
+$( document ).ready(function() {
+     $.ajax({
+            type: "GET",
+            url: "/ajax_search/",
+            data: {
+                'search_text' : $('#search').val(),
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+});
+
+$(function() {
+
+    $('#search').keyup(function() {
+
+        $.ajax({
+            type: "GET",
+            url: "/ajax_search/",
+            data: {
+                'search_text' : $('#search').val(),
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+    });
+});
+
+function searchSuccess(data, textStatus, jqXHR)
+{
+    $('#search-results').html(data)
+}
+
+function resetFRM()
+    {
+        document.getElementById("searchFRM").reset();
+        $.ajax({
+            type: "GET",
+            url: "/ajax_search/",
+            data: {
+                'search_text' : $('#search').val(),
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+    }
+
+</script>
+
+
+    <div class="container">
+	<div class="row">
+        <br /><br />
+		<h2 class="home-heading">Please define your search criteria</h2>
+           <form id="searchFRM">
+            <div id="custom-search-input">
+                           <div class="input-group col-md-12">
+                               <input id="search" type="text" class="  search-query form-control" placeholder="Start Type Anything..." />
+
+                               <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+
+
+
+
+
+                        </div>
+            </div>
+
+
+
+    </div>
+
+
+    <ul id="search-results">    </ul>
+</div>
+
+
+{% endblock %}

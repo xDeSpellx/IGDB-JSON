@@ -1,0 +1,127 @@
+{%  extends 'base.html' %}
+{%  load staticfiles %}
+
+{%  block user-includes %}
+
+<script>
+    var imageSRCL = "{% static 'Parallax/Images/Invaders.png' %}";
+    jQuery(document).ready(function($) {
+        $('.parallax-window-latest').parallax({imageSrc: imageSRCL});
+    });
+
+    var imageSRC = "{% static 'Parallax/Images/parallax-1.jpg' %}";
+    jQuery(document).ready(function($) {
+        $('.parallax-window-top').parallax({imageSrc: imageSRC});
+    });
+
+    var imageSRCR = "{% static 'Parallax/Images/rnd-home.png' %}";
+    jQuery(document).ready(function($) {
+        $('.parallax-window-random').parallax({imageSrc: imageSRCR});
+    });
+</script>
+
+{%  endblock %}
+
+
+
+{% block content %}
+
+<!-- Latest Games-->
+<div class="parallax-window-latest" data-parallax="scroll">
+    <div class="container">
+
+        <br />
+        <h1 class="home-heading" > IGDB // The Internet Games Database</h1>
+        <br />
+
+        <h2 class="home-heading" > check out the latest games</h2>
+        <br />
+            {% for latestGame in latestgames %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="custom-block">
+                        <div class="home-tile"> {{ latestGame }}</div>
+                        <div class="home-release-date"> {{ latestGame.GameReleaseDate }}</div>
+
+                        <a href="/games/{{ latestGame }}">
+                        <img width="200" height="220" src="{{ latestGame.GamePhoto.url }}">
+                        </a>
+
+                        <div class="platform">
+                        {% for GamePLT in latestGame.GamePlatform.all %}
+
+                              <a href="/platforms/{{ GamePLT }}"> <div class="{{ GamePLT |cut:" " }} plat"> {{ GamePLT }}  </div></a>
+
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+    <br /><br /><br />
+</div>
+<!-- Latest Games-->
+
+<!-- Top Rated Games-->
+<div class="parallax-window-top" data-parallax="scroll">
+    <div class="container">
+
+        <br /><br />
+
+        <h2 class="home-heading" > check out the top rated games</h2>
+        <br />
+            {% for topGame in topGames %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="custom-block">
+                        <div class="home-title"> {{ topGame }}</div>
+                        <div class="home-release-date"> {{ topGame.GameReleaseDate }}</div>
+                          <a href="/games/{{ topGame }}">
+                        <img width="200" height="220" src="{{ topGame.GamePhoto.url }}">
+                          </a>
+                        <div class="platform">
+                        {% for GamePLT in topGame.GamePlatform.all %}
+
+                            <a href="/platforms/{{ GamePLT }}"> <div class="{{ GamePLT |cut:" " }} plat"> {{ GamePLT }}  </div></a>
+
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+    <br /><br /><br />
+</div>
+<!-- Top Rated Games-->
+
+<!-- Random Games-->
+<div class="parallax-window-random" data-parallax="scroll">
+    <div class="container">
+
+        <br /><br />
+
+        <h2 class="home-heading" > get some ideas from random games</h2>
+        <br />
+            {% for randomGames in rndGames %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="custom-block">
+                        <div class="home-title"> {{ randomGames }}</div>
+                        <div class="home-release-date"> {{ randomGames.GameReleaseDate }}</div>
+                        <a href="/games/{{ randomGames }}">
+                        <img width="200" height="220" src="{{ randomGames.GamePhoto.url }}">
+                        </a>
+                        <div class="platform">
+                        {% for GamePLT in randomGames.GamePlatform.all %}
+
+                           <a href="/platforms/{{ GamePLT }}"> <div class="{{ GamePLT |cut:" " }} plat"> {{ GamePLT }}  </div></a>
+
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+    <br /><br /><br />
+</div>
+<!-- Random Games-->
+
+{% endblock %}
+

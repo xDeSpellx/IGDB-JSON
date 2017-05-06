@@ -1,0 +1,299 @@
+.navbar
+{
+    border-radius: 0px;
+    margin-bottom: 0px;
+    min-height: 80px;
+}
+
+.navbar-default
+{
+    border: none;
+    background-color: #2C394B;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.navbar-nav
+{
+    margin-top: 15px;
+}
+
+.navbar-brand
+{
+    margin-top: 10px;
+}
+
+.src-frm
+{
+    margin-bottom: 20px;
+}
+
+
+.navbar-default .navbar-brand
+{
+    color: #ffc210;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus
+{
+    color: #e4aa00;
+}
+
+.dropdown-menu
+{
+    background-color: #2c394b;
+}
+
+.navbar-default .navbar-nav > li > a,.dropdown-menu > li > a
+{
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus,
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
+{
+    color: #fff;
+    background-color: rgb(31, 85, 142);
+}
+
+.custom-block
+{
+    background: rgb(44, 57, 75);
+    width: 200px;
+    height: 300px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+    color:#eeeeee;
+    margin-bottom: 50px;
+
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+}
+
+.home-heading
+{
+    text-align: center;
+    text-shadow: 1px 1px 10px rgb(255, 255, 255);
+}
+
+.plat
+{
+    padding: 5px 5px 5px 5px;
+    border-radius: 40px;
+    margin-top: 4px;
+    margin-right: 2px;
+    color: white;
+}
+
+.PS4
+{
+    background: black;
+}
+
+.WiiU
+{
+    background: #3ea3cc;
+}
+
+.XboxOne
+{
+    background: green;
+}
+
+.PC
+{
+    background: #bf0a0a;
+}
+
+.platform
+{
+    display: inline-flex;
+}
+
+footer
+{
+    background: #243c4f;
+    padding: 60px 0;
+}
+
+footer p
+{
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+footer a
+{
+    color: #3ac341;
+}
+
+footer a:hover
+{
+    color: #3ac341;
+}
+
+footer .footer-title
+{
+    position: relative;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: white;
+}
+
+footer .footer-title:after
+{
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: #3ac341;
+    margin-top: 8px;
+}
+
+footer .right-border
+{
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer .left-border
+{
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+    @media (max-width: 991px)
+    {
+        footer .copyright
+        {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        footer .right-border
+        {
+            border-right: none;
+        }
+    }
+
+    @media (max-width: 767px)
+    {
+        footer .right-border
+        {
+            border-right: none;
+        }
+
+        footer .left-border
+        {
+            border-left: none;
+        }
+
+        footer .navigation
+        {
+            margin-top: 40px;
+            border-top: 1px solid white;
+        }
+    }
+
+footer .footer-about
+{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 40px;
+}
+
+footer .contact-info .single
+{
+    margin: 15px 0;
+}
+
+footer .contact-info .single i
+{
+    display: block;
+    float: left;
+    color: #3ac341;
+    margin-right: 10px;
+    line-height: 22px;
+}
+
+footer .contact-info .single p
+{
+    margin: 0;
+    padding: 0;
+    display: block;
+    overflow: hidden;
+}
+
+footer .social-icon
+{
+    margin-top: 40px;
+}
+
+footer .social-icon li a
+{
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg); }
+
+    footer .social-icon li a:hover
+    {
+    border-color: #3ac341;
+    color: #3ac341;
+    }
+
+    footer .social-icon li a i
+    {
+        line-height: 32px;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+footer .navigation li a
+{
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    line-height: 30px;
+    text-decoration: none;
+}
+
+footer .navigation li a:hover
+{
+    color: #3ac341;
+}
+
+footer .copyright
+{
+    padding-top: 40px;
+}
+
+.platformImg
+{
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.desc-par
+{
+    border: 2px solid #909090;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #36369a;
+    margin: 50px 0 50px 0px;
+    padding: 30px;
+    text-align: center;
+}
+
+body
+{
+    background-color: #f1f1f1;
+}

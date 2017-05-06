@@ -1,0 +1,63 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+
+
+      <div class="container" >
+
+        <div style="margin-top: 40px"></div>
+
+          <p style="font-size: 30px"> {{ gameOBJ.GameTitle}}  </p>
+
+      <div class="desc-par">
+           <p> <b> Publisher: </b>  <a href="/publishers/{{ gameOBJ.GamePublisher }}"> {{ gameOBJ.GamePublisher }}</p> </a>
+            <p><b> Genre:</b>
+            {% for GameGN in gameOBJ.GameGenre.all %}
+
+                <a href="/genres/{{ GameGN }}">  {{ GameGN }} </a>
+
+            {% endfor %}
+</p>
+
+            <p> <b> Platforms:</b>
+            {% for GamePLT in gameOBJ.GamePlatform.all %}
+
+        <a href="/platforms/{{ GamePLT }}">  {{ GamePLT }} </a>
+
+       {% endfor %}
+</p>
+
+      <p><b> Release Date:</b> {{ gameOBJ.GameReleaseDate }} </p>
+      <p><b> Rating:</b> {{ gameOBJ.GameRating }}/10 </p>
+</div>
+         <div class="row">
+        <div class="col-md-2 col-md-offset-5">
+        <img width="220" height="280" src="{{ gameOBJ.GamePhoto.url }}">
+
+
+        </div>
+        </div>
+
+            <div style="margin-top: 40px"></div>
+<br />
+            <p> <b> <u> Description </u></b></p>
+            <p> {{ gameOBJ.GameDescription }}</p>
+
+      <br /><br /><br />
+
+      <p><b><u>Video</u></b></p>
+<br />
+
+    <div style="text-align: center">
+        <iframe width="854" height="480"
+            src="{{ gameOBJ.GameVideoURL }}">
+            </iframe>
+</div>
+
+<br /><br /><br />
+
+    <p><b><u> Review</u></b></p>
+    <p>{{ gameOBJ.GameReview }}</p>
+<br />
+</div>
+{% endblock %}

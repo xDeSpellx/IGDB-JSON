@@ -1,0 +1,24 @@
+<br /><br /><br />
+
+{% if not games %}
+    <h2 class="home-heading">Search returned nothing! Please redefine your search.</h2>
+    <br />
+    <input  class="center-block" type="button" onclick="resetFRM()" value="Reset form">
+{% else %}
+    {% for game in games %}
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="custom-block">
+                <div class="home-tile"> {{ game.GameTitle }}</div>
+                    <div class="home-release-date"> {{ game.GameReleaseDate }}</div>
+                         <a href="/games/{{ game }}">
+                        <img width="200" height="220" src="{{ game.GamePhoto.url }}">
+                         </a>
+                            <div class="platform">
+                            {% for GamePLT in game.GamePlatform.all %}
+                                  <a href="/platforms/{{ GamePLT }}"> <div class="{{ GamePLT |cut:" " }} plat"> {{ GamePLT }}  </div></a>
+                            {% endfor %}
+                            </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

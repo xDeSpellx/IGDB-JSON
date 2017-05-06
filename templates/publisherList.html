@@ -1,0 +1,44 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+
+
+  <div class="container">
+
+        <br /><br />
+
+        <h2 class="home-heading" > Listing all "{{ publisherOBJ.PublisherName }}" Games</h2>
+        <br />
+
+        <div class="desc-par">
+        <p> {{ publisherOBJ.PublisherName }},founded at {{ publisherOBJ.PublisherFoundDate }}.</p>
+        <p> {{ publisherOBJ.PublisherName }}, has {{ publisherOBJ.PublisherEmployeeNumber }}
+        employees it's current CEO is {{ publisherOBJ.PublisherCEO }} and it's website is
+        <a target="_blank" href="{{ publisherOBJ.PublisherWebsite }}">{{ publisherOBJ.PublisherWebsite }}</a>
+
+        </p>
+        </div>
+
+        {% for game in games %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="custom-block">
+                        <div class="home-title"> {{ game }}</div>
+                        <div class="home-release-date"> {{ game.GameReleaseDate }}</div>
+
+                         <a href="/games/{{ game }}">
+                        <img width="200" height="220" src="{{ game.GamePhoto.url }}">
+                         </a>
+
+                        <div class="platform">
+                        {% for GamePLT in game.GamePlatform.all %}
+
+                            <a href="/platforms/{{ GamePLT }}"> <div class="{{ GamePLT |cut:" " }} plat"> {{ GamePLT }}  </div></a>
+
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+
+{%  endblock %}
