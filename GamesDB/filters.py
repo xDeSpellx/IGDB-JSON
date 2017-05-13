@@ -23,3 +23,6 @@ class GameFilter(django_filters.FilterSet):
     class Meta:
         model = Game
         fields = ('GameTitle',)
+
+
+

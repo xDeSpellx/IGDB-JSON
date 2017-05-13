@@ -5,26 +5,26 @@ import django_filters
 class PublisherSerializer(serializers.ModelSerializer):
     class Meta:
         model=Publisher
-        fields = ('PublisherName',)
+        fields = '__all__'
 
 class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model= Genre
-        fields=('GenreTitle',)
+        fields= '__all__'
 
 class PlatformSerializer(serializers.ModelSerializer):
     class Meta:
         model=Platform
-        fields=('PlatformName',)
+        fields='__all__'
 
 class GameSerializer(serializers.ModelSerializer):
-    GamePublisher = PublisherSerializer(many=False)
-    GameGenre = GenreSerializer(many=True)
-    GamePlatform = PlatformSerializer(many=True)
+    GamePublisher = PublisherSerializer(many=False,read_only=True)
+    GameGenre = GenreSerializer(many=True,read_only=True)
+    GamePlatform = PlatformSerializer(many=True,read_only=True)
+
+
 
     class Meta:
         model = Game
+        fields = '__all__'
 
-        fields = ('GameTitle','GamePublisher','GameGenre','GameReleaseDate',
-                 'GamePhoto','GamePrice','GameDescription','GameVideoURL','GameRating',
-                'GamePlatform','GameReview')

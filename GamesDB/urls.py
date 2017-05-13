@@ -14,10 +14,12 @@ urlpatterns = [
     url(r'^search/$', views.search),
     url(r'^ajax_search/$', views.ajax_search),
     url(r'^games/(?P<game>[\w\:\'\" "\-]+)/$', views.gameList),
-    url(r'^gamelist/', views.GameList.as_view()),
-    url(r'^genrelist/', views.GenreList.as_view()),
-    url(r'^platformlist/', views.PlatformList.as_view()),
-    url(r'^publisherlist/', views.PublisherList.as_view()),
+    url(r'^gamelist/(?P<pk>\d+)$', views.GameDetailApiView.as_view()),
+    url(r'^gamelist/(?P<pk>\d+)/edit$', views.GameUpdateApiView.as_view()),
+    url(r'^gamelist?', views.GameList.as_view()),
+    url(r'^genrelist', views.GenreList.as_view()),
+    url(r'^platformlist', views.PlatformList.as_view()),
+    url(r'^publisherlist', views.PublisherList.as_view()),
     url(r'^docs/', include('rest_framework_docs.urls')),
 ]
 

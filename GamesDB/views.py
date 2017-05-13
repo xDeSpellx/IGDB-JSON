@@ -4,20 +4,31 @@ from .models import Game, Platform, Genre, Publisher
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, request
 from .serializers import GameSerializer,GenreSerializer,PlatformSerializer,PublisherSerializer
 from rest_framework import filters
 from rest_framework import generics
 from .filters import GameFilter
 import django_filters
+from rest_framework.generics import ListAPIView,RetrieveAPIView,UpdateAPIView
 
-class GameList(generics.ListAPIView):
+#RETRIEVE
+class GameList(ListAPIView):
     queryset = Game.objects.all()
     serializer_class=GameSerializer
     filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter,)
     search_fields = ('GameTitle',)
     filter_class = GameFilter
     ordering_fields= ('GameTitle','GameRating','GameReleaseDate')
+
+class GameDetailApiView(RetrieveAPIView):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
+
+#UPDATE
+class GameUpdateApiView(UpdateAPIView,RetrieveAPIView):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
 
 class GenreList(generics.ListAPIView):
     queryset = Genre.objects.all()
