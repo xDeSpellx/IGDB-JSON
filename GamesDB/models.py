@@ -35,7 +35,7 @@ class Game(models.Model):
    GameGenre = models.ManyToManyField(Genre,verbose_name='Genre')
    GamePlatform = models.ManyToManyField(Platform,verbose_name='Platform')
    GameReleaseDate = models.DateField(default=timezone.now,verbose_name = 'Release Date')
-   GamePublisher = models.ForeignKey('Publisher', verbose_name = 'Publisher')
+   GamePublisher = models.ForeignKey('Publisher', verbose_name = 'Publisher',default=1)
    GamePhoto = models.ImageField(null=True,verbose_name = 'Image')
    GameVideoURL = models.CharField(max_length=100,verbose_name = 'Video URL')
    GameReview = models.TextField(max_length=99999,verbose_name = 'Review')

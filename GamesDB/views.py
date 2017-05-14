@@ -3,6 +3,7 @@ from .models import Game, Platform, Genre, Publisher
 
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status, request
 from .serializers import GameSerializer,GenreSerializer,PlatformSerializer,PublisherSerializer
@@ -10,7 +11,7 @@ from rest_framework import filters
 from rest_framework import generics
 from .filters import GameFilter
 import django_filters
-from rest_framework.generics import ListAPIView,RetrieveAPIView,UpdateAPIView
+from rest_framework.generics import ListAPIView,RetrieveAPIView,UpdateAPIView,DestroyAPIView,CreateAPIView
 
 #RETRIEVE
 class GameList(ListAPIView):
@@ -21,14 +22,27 @@ class GameList(ListAPIView):
     filter_class = GameFilter
     ordering_fields= ('GameTitle','GameRating','GameReleaseDate')
 
-class GameDetailApiView(RetrieveAPIView):
+class GameDetail(RetrieveAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
 #UPDATE
-class GameUpdateApiView(UpdateAPIView,RetrieveAPIView):
+class GameUpdate(UpdateAPIView,RetrieveAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
+    permission_classes = [IsAuthenticated]
+
+#DELETE
+class GameDestroy(DestroyAPIView,RetrieveAPIView):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
+    permission_classes = [IsAuthenticated]
+
+#CREATE
+class GameCreate(CreateAPIView):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
+    permission_classes = [IsAuthenticated]
 
 class GenreList(generics.ListAPIView):
     queryset = Genre.objects.all()
